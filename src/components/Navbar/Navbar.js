@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {inputAction} from "../../redux/actions/actions";
 import {SubmitHandler} from "./navbarFunctions";
+import {citiesList} from "../../constants";
 
 function Navbar(props) {
   const state = useSelector(state => state.weather)
@@ -20,9 +21,17 @@ function Navbar(props) {
                    onChange={(e) => {
                      dispatch(inputAction(e.target.value))
                    }}
+                   list="cities-list"
                    value={state.inputValue}
                    type="search"/>
             <button className="btn" type="submit">Search</button>
+            <datalist id="cities-list">
+              {
+                citiesList.map((item, index) => {
+                  return <option key={index} value={item}/>
+                })
+              }
+            </datalist>
           </form>
         </div>
       </nav>
