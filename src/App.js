@@ -7,9 +7,7 @@ function App() {
   useEffect(async () => {
     const res = await axios.get("https://geolocation-db.com/json/bd2b0510-be5a-11ec-995d-ff924f0ab448")
     console.log(res.data);
-    alert(res.data.city)
-    alert(res.data.latitude)
-    alert(res.data.longitude)
+    alert(`${res.data.city}, ${res.data.latitude}, ${res.data.longitude}`)
   })
 
   return (
